@@ -6,6 +6,10 @@
 __________________
 ###촬영버튼 클릭(onClick) 후 작동
 ####인텐트 생성 및 카메라 설정
+인텐트 생성 후, 미리 카메라의 설정을 해준다
+Camera.parameters에서 getSupportedPictureSizes()로 현재 앱을 실행중인 기기에서 지원하는 캡쳐 사이즈 리스트를 얻어온다
+원하는 해상도에 가장 최적화된 Camera.Size정보를 구해주는 getOptimalPictureSize함수를 이용해 적용할 Size값을 구한다
+카메라의 Parameter적용을 완료한 후, release시킨다
 
 ```
 Intent intent = new Intent();
@@ -27,7 +31,9 @@ camera.release();
 ```
 
 ####카메라 촬영 후 저장할 사진 경로 설정
-
+촬영 후 저장할 파일을 설정한다
+아래예제에서는 폴더명과 파일명을 이용해 folderPath, filePath를 지정하고, folderPath의 폴더를 먼저 생성해 준 후 filePath의 파일을 생성한다
+생선한 파일의 Uri를 outputFileUri변수에 지정한다
 ```
 // 저장할 파일 설정
 // 외부저장소 경로
@@ -47,7 +53,9 @@ Uri outputFileUri = Uri.fromFile(file);
 ```
 
 ####카메라 인텐트에 Action및 Extra설정
-
+Intent에 카메라를 작동시키기위해 setAction(MediaStore.ACTION_IMAGE_CAPTURE)를 지정하고,
+putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri) 를 이용해 촬영 후 저장될 파일 경로를 지정해준다
+액티비티 실행 후 Result를 받아 다음 작동을 진행한다
 ```
 // 카메라 작동시키는 Action으로 인텐트 설정, OutputFileURI 추가
 intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -59,6 +67,7 @@ ______________________
 ###onActivityResult에서의 작동
 
 ####resultCode와 requestCode확인, 파일에서 Bitmap변환해서 이미지뷰에 삽입
+TAKE_CAMERA, 사진찍기 액션 후에 저장된 파일 경로에서 비트맵을 얻어서 이미지뷰에 삽입한다
 ```
 if(resultCode == RESULT_OK){
 			if(requestCode == TAKE_CAMERA){
