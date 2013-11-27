@@ -2,7 +2,8 @@
 ===
 
 
-안드로이드에서 ACTION_IMAGE_CAPTURE 인텐트를 사용한 카메라 액션의 상세한 사용법입니다
+안드로이드에서 ACTION_IMAGE_CAPTURE 인텐트를 사용한 카메라 액션의 상세한 사용법입니다  
+[상세한 한글 사용법](http://arcanelux.tistory.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EC%B9%B4%EB%A9%94%EB%9D%BC-%EA%B0%80%EC%9D%B4%EB%93%9CACTIONIMAGECAPTURE)
 __________________
 ###촬영버튼 클릭(onClick) 후 작동
 ####인텐트 생성 및 카메라 설정
